@@ -104,9 +104,8 @@ void *connection_handler(void *desc) {
 
       //Build and send the 404 error response message.
       strcpy(bad_request, "HTTP/1.1 404 sendErrorErrorError\r\n");
-      strcat(bad_request, "Content-Type:text/html\r\n\r\n<html><h1>AWWWW DAMN. THAT SHITE IS BLACKLISTED!</h1></html>");
+      strcat(bad_request, "Content-Type: text/html\r\n\r\n<html><h1>AWWWW DAMN. THAT SHITE IS BLACKLISTED!</h1></html>\n");
       send(ClientSocket, bad_request, strlen(bad_request), 0);
-      printf("sent\n");
       close(ClientSocket);
       free(desc);
       pthread_exit("Exiting...\n");
